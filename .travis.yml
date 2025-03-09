@@ -8,7 +8,7 @@ dist: precise
 before_install:
   # Check if the Node.js version is 0.20 and install spawn-sync
   - |
-    if [[ "$NODE_VERSION" == "v0.10"* ]]; then
-      echo "Installing spawn-sync for Node.js 0.10"
-      npm install spawn-sync
+    if [[ "$NODE_VERSION" == "v0.10"* || "$NODE_VERSION" == "v0.12"* ]]; then
+      echo "Installing spawn-sync version 1.0.15 for Node.js $NODE_VERSION"
+      npm install spawn-sync@1.0.15
     fi
