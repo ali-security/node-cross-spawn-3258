@@ -26,6 +26,13 @@ describe('cross-spawn', function () {
     var methods = ['spawn', 'sync'];
 
     methods.forEach(function (method) {
+        // Check if the current Node.js version supports spawnSync
+        var supportsSpawnSync = typeof spawn.sync === 'function';
+
+        if (method === 'sync' && !supportsSpawnSync) {
+            console.log('Skipping spawnSync tests because spawnSync is not supported in this Node.js version.');
+            return;
+        }
         describe(method, function () {
             var originalPath = process.env.PATH;
 
